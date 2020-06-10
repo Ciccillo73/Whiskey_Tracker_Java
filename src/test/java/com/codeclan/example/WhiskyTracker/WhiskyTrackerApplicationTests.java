@@ -1,5 +1,6 @@
 package com.codeclan.example.WhiskyTracker;
 
+import com.codeclan.example.WhiskyTracker.models.Distillery;
 import com.codeclan.example.WhiskyTracker.models.Whisky;
 import com.codeclan.example.WhiskyTracker.repositories.DistilleryRepository;
 import com.codeclan.example.WhiskyTracker.repositories.WhiskyRepository;
@@ -35,5 +36,18 @@ public class WhiskyTrackerApplicationTests {
 		List<Whisky> foundWhiskies = whiskyRepository.findByYear(2018);
 		assertEquals(6, foundWhiskies.size());
 	}
+
+	@Test
+	public	void findDistilleryByRegion(){
+		List<Distillery> foundDistillery = distilleryRepository.findByRegion("Highland");
+		assertEquals(3, foundDistillery.size());
+	}
+
+	@Test
+	public	void canFindWhiskyByDistilleryNameAndAge(){
+		List<Whisky> foundWhiskeis = whiskyRepository.findByDistilleryNameAndAge("Talisker",1);
+		assertEquals(2, foundWhiskeis.size());
+	}
+
 
 }
