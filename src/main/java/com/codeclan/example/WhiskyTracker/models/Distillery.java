@@ -1,5 +1,7 @@
 package com.codeclan.example.WhiskyTracker.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +19,8 @@ public class Distillery {
 
     @Column(name = "region")
     private String region;
+
+    @JsonBackReference
 
     @OneToMany(mappedBy = "distillery", fetch = FetchType.LAZY)
     private List<Whisky> whiskies;
